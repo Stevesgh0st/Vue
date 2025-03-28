@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes Dinámicas</title>
+    <style>
+        #app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+        img {
+            margin-bottom: 20px;
+            border: 2px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id="app">
+        <img width="200px" height="200px" :src="imagenes[pos]">
+        <select v-model="pos">
+            <option value="0">Escudo Barcelona</option>
+            <option value="1">Escudo Real Madrid</option>
+            <option value="2">Escudo Atletico Madrid</option>
+        </select>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    imagenes: [
+                        'https://static.vecteezy.com/system/resources/previews/014/414/712/non_2x/fc-barcelona-logo-on-transparent-background-free-vector.jpg',
+                        'https://i.pinimg.com/736x/21/46/78/214678f2d480cf2b0436acc82183a963.jpg',
+                        'https://www.shutterstock.com/image-illustration/atletico-madrid-logo-white-background-600w-2403769657.jpg'
+                    ],
+                    pos: 1
+                }
+            },
+            methods: {
+                suma() {
+                    this.r = this.n1 + this.n2
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
